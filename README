@@ -1,0 +1,18 @@
+has_profile_items
+===============
+
+How many times did it happen to you that, your project needed to implement user profiles, company profiles, product profiles, and all kinds of profile but you had no choice other than creating every bit of code to implement profiles retrieve data and then cache them.
+
+has_profile_items brings you comfort of quickly creating generic profile items and attach it to any model, so that you get more faster in your app development.
+
+[Watch it yourself] TODO: Tutorial Video
+
+
+
+Example
+=======
+
+will soone come here
+
+
+Copyright (c) 2009 [Abhishek Parolkar] abhishek[at]parolkar.com , released under the MIT license

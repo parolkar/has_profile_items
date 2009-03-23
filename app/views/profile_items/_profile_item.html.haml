@@ -1,0 +1,2 @@
+.profile_item{:id=> "profile-item-#{profile_item.id}"}
+  = render :partial => "/profile_items/#{ (profile_item.new_record? || profile_item.content == nil ) ? 'edit' : 'show' }/#{profile_item.itemtype.to_s}" , :object => profile_item
