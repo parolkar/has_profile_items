@@ -1,8 +1,3 @@
-# desc "Explaining what the task does"
-# task :has_profile_items do
-#   # Task goes here
-# end
-
 namespace :has_profile_items do
     
     desc 'Sets up parolkar\'s has_profile_items plugin '
