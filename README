@@ -12,7 +12,19 @@ has_profile_items brings you comfort of quickly creating generic profile items a
 Example
 =======
 
-will soone come here
+coming soon
+
+
+Quick Installation (only if you already know how to use plugin)
+==================
+
+
+$ cd your_project_dir
+
+you should be using haml/sass for your templates , if not, go set it up http://github.com/chriseppstein/compass-rails-sample-application/tree/master
+
+$ git submodule add git://github.com/parolkar/has_profile_items.git vendor/plugins/has_profile_items
+$ rake has_profile_items:setup
 
 
 Copyright (c) 2009 [Abhishek Parolkar] abhishek[at]parolkar.com , released under the MIT license
