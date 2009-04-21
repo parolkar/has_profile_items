@@ -35,6 +35,12 @@ class ProfileItemsController < ApplicationController
   
   def update
     @profile_item = ProfileItem.find(params[:id])
+     
+    if @profile_item.check(:update_permission,session) == false
+      render :text => "Operation Not Permitted / Malicious Request" 
+    return 
+    end
+   
     
     @profile_item.content =  params[:content]
     @profile_item.active = true
