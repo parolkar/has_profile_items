@@ -1,0 +1,5 @@
+%label
+  Last Name
+%label
+  = last_name.content.to_s
+= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{last_name.id}" , :update =>"profile-item-#{last_name.id}")

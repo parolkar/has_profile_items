@@ -1,0 +1,5 @@
+- form_remote_tag :url => "/profile_items/update/#{last_name.id}" , :update =>"profile-item-#{last_name.id}" do
+  %label
+    Last Name
+  = text_field_tag 'content', "#{last_name.content.to_s}", :size => 20
+  = image_submit_tag("has_profile_items/profile_item_save.png")
