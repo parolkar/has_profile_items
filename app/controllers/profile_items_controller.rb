@@ -11,8 +11,12 @@ class ProfileItemsController < ApplicationController
   def edit
     #TODO : Security check required
     @profile_item = ProfileItem.find(params[:id])
-
-    render :partial => "/profile_items/edit/#{@profile_item.itemtype.to_s}" , :object => @profile_item
+    
+    if @profile_item.check(:update_permission,session) == true # Check if accessing obj has edit permission   
+       render :partial => "/profile_items/edit/#{@profile_item.itemtype.to_s}" , :object => @profile_item
+    else
+       render :partial => "/profile_items/show/#{@profile_item.itemtype.to_s}" , :object => @profile_item 
+    end
   end
 
   # POST /profile_items
@@ -22,7 +26,7 @@ class ProfileItemsController < ApplicationController
 
     respond_to do |format|
       if @profile_item.save
-        flash[:notice] = 'ProfileItem was successfully created.'
+        #flash[:notice] = 'ProfileItem was successfully created.'
         format.html { redirect_to(@profile_item) }
         format.xml  { render :xml => @profile_item, :status => :created, :location => @profile_item }
       else
@@ -36,7 +40,7 @@ class ProfileItemsController < ApplicationController
   def update
     @profile_item = ProfileItem.find(params[:id])
      
-    if @profile_item.check(:update_permission,session) == false
+    if @profile_item.check(:update_permission,session) != true
       render :text => "Operation Not Permitted / Malicious Request" 
     return 
     end
@@ -45,7 +49,7 @@ class ProfileItemsController < ApplicationController
     @profile_item.content =  params[:content]
     @profile_item.active = true
       if @profile_item.save
-        flash[:notice] = 'ProfileItem was successfully updated.'
+        #flash[:notice] = 'ProfileItem was successfully updated.'
         render :partial => "/profile_items/show/#{@profile_item.itemtype.to_s}" , :object => @profile_item
       else
         render :partial => "/profile_items/edit/#{@profile_item.itemtype.to_s}" , :object => @profile_item

@@ -63,14 +63,14 @@ module ParolkarInnovationLab
          permitted_ar_objects = Array.new
          
          method_symbols.each {|method_sym|
-           result_obj = ar_obj.send(method_sym.to_sym)
+           result_obj = self.send(method_sym.to_sym)
            if result_obj.is_a?(Array)
               permitted_ar_objects = permitted_ar_objects |  result_obj #merge with no duplicates
            else
               permitted_ar_objects << result_obj # single insert
            end
-           }
-                                                                
+           }                   
+                  
          return permitted_ar_objects.include? ar_obj 
       rescue
            false    

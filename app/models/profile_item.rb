@@ -3,7 +3,7 @@ class ProfileItem < ActiveRecord::Base
   
   def check(permission, app_session)  
      
-      ar_obj = ProfileItem.get_obj_accessing(app_session)  
+      ar_obj = ProfileItem.get_obj_accessing(app_session) 
       return self.entity_that_has_profile.profile_items_access_permitted(ar_obj,permission)
   rescue
       false  
