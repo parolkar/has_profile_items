@@ -1,5 +1,10 @@
 class ProfileItem < ActiveRecord::Base
   belongs_to :entity_that_has_profile, :polymorphic => true    
+  file_column :icon, :magick => { 
+            :versions => { "thumb" => "50x50", "medium" => "640x480>" }
+          }
+  
+  file_column :file_attached
   
   def check(permission, app_session)  
      

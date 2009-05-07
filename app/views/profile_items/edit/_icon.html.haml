@@ -1,0 +1,4 @@
+%label
+  Icon   
+= render :partial => "/profile_items/attachment_wrapper_iframe" , :locals => {:profile_item => icon , :update_column => :icon  , :iframe_width => "160" , :iframe_height => "60"} 
+= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{icon.id}" , :update =>"profile-item-#{icon.id}")

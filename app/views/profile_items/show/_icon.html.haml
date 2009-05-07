@@ -1,0 +1,4 @@
+%label
+  Icon
+= render :partial => "/profile_items/show/icon_column" , :locals=>{ :profile_item => icon , :column => "icon"}
+= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{icon.id}" , :update =>"profile-item-#{icon.id}")

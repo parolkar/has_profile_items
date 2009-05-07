@@ -1,0 +1,5 @@
+- form_tag "/profile_items/update_attachment", :multipart => true do   
+  = file_column_field "attachments", "#{@update_column}" , :size => 1
+  %input{:type=>"hidden", :name=>"profile_item_id" , :value=>"#{@profile_item.id}"}
+  %input{:type=>"hidden", :name=>"column" , :value=>"#{@update_column}"}  
+  = image_submit_tag("has_profile_items/profile_item_upload.png")
