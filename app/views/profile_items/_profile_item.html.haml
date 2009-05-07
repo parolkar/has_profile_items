@@ -1,6 +1,6 @@
 .profile_item{:id=> "profile-item-#{profile_item.id}"}
   - partial_to_be_rendered = "/profile_items/show/#{profile_item.itemtype.to_s}" #this is default
   - if  profile_item.check(:update_permission,session) == true  && (profile_item.new_record? || profile_item.content == nil )
-    - partial_to_be_rendered = "/profile_items/edit/#{profile_item.itemtype.to_s}"
-     
+    - partial_to_be_rendered = "/profile_items/edit/#{profile_item.itemtype.to_s}" 
+  
   = render :partial => partial_to_be_rendered , :object => profile_item

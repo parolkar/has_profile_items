@@ -5,7 +5,9 @@ class CreateProfileItems < ActiveRecord::Migration
       t.text :content
       t.boolean :active
       t.integer :entity_that_has_profile_id # Essentially , it is entity_that_has_profile's id
-      t.string :entity_that_has_profile_type # Essentially , it is entity_that_has_profile's type
+      t.string :entity_that_has_profile_type # Essentially , it is entity_that_has_profile's type    
+      t.string :icon
+      t.string :file_attached
       t.timestamps
     end
   end
