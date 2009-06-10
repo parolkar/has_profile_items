@@ -1,13 +1,14 @@
 class ProfileItem < ActiveRecord::Base
   belongs_to :entity_that_has_profile, :polymorphic => true    
+  attr_accessor :profile_item_options # this is an temporary Hash to hold references to temporary Objects that are supposed to be used by views
+
   file_column :icon, :magick => { 
-            :versions => { "thumb" => "50x50", "medium" => "640x480>" }
+            :versions => { "thumb" => "30x30", "medium" => "90x90","large" => "640x480" }
           }
   
   file_column :file_attached
   
   def check(permission, app_session)  
-     
       ar_obj = ProfileItem.get_obj_accessing(app_session) 
       return self.entity_that_has_profile.profile_items_access_permitted(ar_obj,permission)
   rescue

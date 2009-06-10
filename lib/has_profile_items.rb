@@ -42,13 +42,21 @@ module ParolkarInnovationLab
     end
     
     module InstanceMethods
-      def profile_item_list
+      def profile_item_list(optional_exclude_types=[])
         types = profile_item_types_for_this_model
         list =[]
         types.each {|item_type|
-          list.push self.profile_items.find_or_create_by_itemtype(item_type.to_s, :conditions => ["active = ?",true], :order => "DESC created_at")
+          list.push self.profile_items.find_or_create_by_itemtype(item_type.to_s, :conditions => ["active = ?",true], :order => "DESC created_at") unless optional_exclude_types.include?(item_type)
         }
         list   
+      end 
+      def profile_item(item_type)    
+        
+        if  profile_item_types_for_this_model.include?(item_type)
+           return self.profile_items.find_or_create_by_itemtype(item_type.to_s, :conditions => ["active = ?",true], :order => "DESC created_at")
+        else 
+          raise "has_profile_items [...:#{item}...] - item type for this model can only be from folowing set [:#{profile_item_types_for_this_model.join(',:')}]"
+        end
       end
        def itself
 	      self
@@ -56,7 +64,7 @@ module ParolkarInnovationLab
       def all_in_its_class
         self.class.find :all
       end  
-      def profile_items_access_permitted(ar_obj,permission = :update_permission)
+      def profile_items_access_permitted(ar_obj,permission = :update_permission)  
          permissions = profile_item_permissions_for_this_model 
          method_symbols = permissions[permission]
          

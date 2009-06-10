@@ -1,0 +1,2 @@
+= render :partial => "/profile_items/show/#{params[:column]}_column" , :locals=>{ :profile_item => @profile_item , :column => params[:column]}    
+= link_to "edit","/profile_items/edit_attachment?profile_item_id=#{@profile_item.id}&update_column=#{params[:column]}"

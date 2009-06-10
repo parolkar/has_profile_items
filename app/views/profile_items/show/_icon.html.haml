@@ -1,4 +1,5 @@
-%label
-  Icon
-= render :partial => "/profile_items/show/icon_column" , :locals=>{ :profile_item => icon , :column => "icon"}
-= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{icon.id}" , :update =>"profile-item-#{icon.id}")
+.icon-wrapper
+  = render :partial => "/profile_items/show/icon_column" , :locals=>{ :profile_item => icon , :column => "icon" }
+
+- if  icon.check(:update_permission,session) == true  && (!icon.profile_item_options || (icon.profile_item_options && icon.profile_item_options[:force_read_only] !=true))
+  = link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{icon.id}" , :update =>"profile-item-#{icon.id}")

@@ -105,7 +105,8 @@ class ProfileItemsController < ApplicationController
        
        if @profile_item.save
          #flash[:notice] = 'ProfileItem was successfully updated.'
-         render :partial => "/profile_items/show/#{params[:column]}_column" , :locals=>{ :profile_item => @profile_item , :column => params[:column]}
+         #render :partial => "/profile_items/show/#{params[:column]}_column" , :locals=>{ :profile_item => @profile_item , :column => params[:column]}
+         render :action => "show_attachment" , :layout => false
        else
          render :text => "Something went wrong :-("
        end
