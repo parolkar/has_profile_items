@@ -24,7 +24,7 @@ class ProfileItemsController < ApplicationController
   def create
     @profile_item = ProfileItem.new(params[:profile_item])
 
-    if params.has_key? (:attachments)
+    if params.has_key?(:attachments)
         @profile_item.icon =  params[:attachments][:icon] 
         @profile_item.icon_temp =  params[:attachments][:icon_temp]
     end    
@@ -50,7 +50,7 @@ class ProfileItemsController < ApplicationController
     return 
     end
    
-    if params.has_key? (:attachments)       
+    if params.has_key?(:attachments)       
         @profile_item.icon =  params[:attachments][:icon] 
         @profile_item.icon_temp =  params[:attachments][:icon_temp]
     end 
@@ -90,7 +90,7 @@ class ProfileItemsController < ApplicationController
       return 
       end 
       
-       if params.has_key? (:attachments)  
+       if params.has_key?(:attachments)  
             if params[:attachments].has_key? (:icon)  
               @profile_item.icon =  params[:attachments][:icon] 
               @profile_item.icon_temp =  params[:attachments][:icon_temp] 

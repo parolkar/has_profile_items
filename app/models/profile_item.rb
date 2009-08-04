@@ -1,7 +1,9 @@
 class ProfileItem < ActiveRecord::Base
   belongs_to :entity_that_has_profile, :polymorphic => true    
-  attr_accessor :profile_item_options # this is an temporary Hash to hold references to temporary Objects that are supposed to be used by views
-
+  attr_writer :profile_item_options # this is an temporary Hash to hold references to temporary Objects that are supposed to be used by views
+    
+  def profile_item_options ; @profile_item_options  ||= Hash.new ;  end
+    
   file_column :icon, :magick => { 
             :versions => { "thumb" => "30x30", "medium" => "90x90","large" => "640x480" }
           }
@@ -18,7 +20,7 @@ class ProfileItem < ActiveRecord::Base
   
   def self.obj_accessing_profile_items(ar_obj,app_session)
      app_session[:obj_accessing_profile_items_id] = ar_obj.id 
-     app_session[:obj_accessing_profile_items_type] = ar_obj.type
+     app_session[:obj_accessing_profile_items_type] = ar_obj.class
   end 
   def self.get_obj_accessing(app_session)
      ar_obj = Object.new
