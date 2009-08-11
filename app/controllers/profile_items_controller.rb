@@ -89,14 +89,16 @@ class ProfileItemsController < ApplicationController
         render :text => "Operation Not Permitted / Malicious Request" 
       return 
       end 
-      
+       @attachment_type = ""
        if params.has_key?(:attachments)  
-            if params[:attachments].has_key? (:icon)  
+            if params[:attachments].has_key?(:icon)  
               @profile_item.icon =  params[:attachments][:icon] 
-              @profile_item.icon_temp =  params[:attachments][:icon_temp] 
-            elsif params[:attachments].has_key? (:file_attached)  
+              @profile_item.icon_temp =  params[:attachments][:icon_temp]  
+              @attachment_type = "icon"  
+            elsif params[:attachments].has_key?(:file_attached)  
               @profile_item.file_attached =  params[:attachments][:file_attached] 
               @profile_item.file_attached_temp =  params[:attachments][:file_attached_temp]
+              @attachment_type = "file_attached"  
             end 
               
        end  
@@ -108,7 +110,7 @@ class ProfileItemsController < ApplicationController
          #render :partial => "/profile_items/show/#{params[:column]}_column" , :locals=>{ :profile_item => @profile_item , :column => params[:column]}
          render :action => "show_attachment" , :layout => false
        else
-         render :text => "Something went wrong :-("
+         render :text => "Something went wrong :-( (either the file is invalid or huge in size) <a href=\"/profile_items/edit_attachment?profile_item_id=#{@profile_item.id.to_s}&update_column=#{@attachment_type}\" ><b>retry</b></a>" 
        end
        
       
