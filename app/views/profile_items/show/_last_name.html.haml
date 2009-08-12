@@ -2,4 +2,4 @@
   Last Name
 %label
   = last_name.content.to_s
-= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{last_name.id}" , :update =>"profile-item-#{last_name.id}")
+= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{last_name.id}" , :update =>"profile-item-#{last_name.id}")  if  last_name.check(:update_permission,session) == true   && (!last_name.profile_item_options || (last_name.profile_item_options && last_name.profile_item_options[:force_read_only] !=true))

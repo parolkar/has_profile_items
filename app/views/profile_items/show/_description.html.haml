@@ -2,4 +2,4 @@
   Description
 %label
   = description.content.to_s
-= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{description.id}" , :update =>"profile-item-#{description.id}")
+= link_to_remote(image_tag("has_profile_items/profile_item_edit.png"), :url => "/profile_items/edit/#{description.id}" , :update =>"profile-item-#{description.id}")  if  description.check(:update_permission,session) == true   && (!description.profile_item_options || (description.profile_item_options && description.profile_item_options[:force_read_only] !=true))
