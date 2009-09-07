@@ -3,4 +3,4 @@
 - default_url = profile_item.profile_item_options[:default_img_url] if profile_item.profile_item_options
 - img = url_for_file_column(profile_item, "icon",icon_img_type)  
 - img = default_url if !img && default_url
-= image_tag img if img != nil
+= image_tag(img,:class => icon_img_type) if img != nil

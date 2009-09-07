@@ -5,7 +5,7 @@ class ProfileItem < ActiveRecord::Base
   def profile_item_options ; @profile_item_options  ||= Hash.new ;  end
     
   file_column :icon, :magick => { 
-            :versions => { "thumb" => "30x30", "medium" => "90x90","large" => "640x480" }
+            :versions => { "thumb" => "48x48", "medium" => "125x125","large" => "640x480" }
           }
               
   validates_filesize_of :icon, :in => 0.kilobytes..2048.kilobytes 
